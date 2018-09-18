@@ -1,6 +1,7 @@
 build-master:
   stage: build
   script:
+    - make dbuild-cryptos-acinstaller-noarch
     - make dbuild-cryptos-acinstaller-x8664
     - make dbuild-cryptos-acinstaller-armhf
     - make dbuild-cryptos-acinstaller-aarch64

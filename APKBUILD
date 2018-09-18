@@ -13,7 +13,11 @@ install=""
 subpackages=""
 replaces=""
 
+build() {
+	cp ./acinstaller.initd "$srcdir"
+}
+
 package() {
 	install -D -m755 "$srcdir"/acinstaller.initd "$pkgdir"/etc/init.d/acinstaller
-    rc-update add helloworld default
+	rc-update add acinataller default
 }

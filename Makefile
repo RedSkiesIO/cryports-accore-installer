@@ -1,3 +1,13 @@
+.PHONY: dbuild-cryptos-acinstaller-noarch
+dbuild-cryptos-acinstaller-noarch:
+	docker run \
+		-e CARCH=noarch \
+		-v ${PWD}:/home/builder/cryptos/src \
+		-v ${KEY_DIR}:/home/builder/.abuild \
+		-v ${PACKAGES_DIR}:/home/builder/packages \
+		cryptosregistry.azurecr.io/docker-build:x8664 \
+		sh -c "cd cryptos/src && abuild checksum && abuild -R -c"
+
 .PHONY: dbuild-cryptos-acinstaller-x8664
 dbuild-cryptos-acinstaller-x8664:
 	docker run \

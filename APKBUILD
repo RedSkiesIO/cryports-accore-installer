@@ -12,11 +12,8 @@ depends=""
 install=""
 subpackages=""
 replaces=""
-
-build() {
-	cp ./acinstaller.initd "$srcdir"
-}
+source="acinstaller"
 
 package() {
-	install -D -m755 "$srcdir"/acinstaller.initd "$pkgdir"/etc/init.d/acinstaller
+	install -D -m755 "$srcdir"/acinstaller "$pkgdir"/etc/init.d/acinstaller
 }

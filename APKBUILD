@@ -5,7 +5,7 @@ pkgver=0.0.1
 pkgrel=1
 pkgdesc="AC Core Installer"
 url="http://atlascity.io"
-arch="all"
+arch="noarch"
 license="MIT"
 makedepends=""
 depends=""
@@ -15,5 +15,5 @@ replaces=""
 source="acinstaller"
 
 package() {
-	install -D -m755 "$srcdir"/acinstaller "$pkgdir"/etc/init.d/acinstaller
+    install -D -m755 "$srcdir"/acinstaller "$pkgdir"/etc/init.d/acinstaller
 }

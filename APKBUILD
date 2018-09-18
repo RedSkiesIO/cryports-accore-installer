@@ -9,7 +9,7 @@ arch="all"
 license="MIT"
 makedepends=""
 depends=""
-install="$pkgname.post-install"
+install=""
 subpackages=""
 replaces=""
 

@@ -6,7 +6,7 @@ dbuild-cryptos-acinstaller-noarch:
 		-v ${KEY_DIR}:/home/builder/.abuild \
 		-v ${PACKAGES_DIR}:/home/builder/packages \
 		cryptosregistry.azurecr.io/docker-build:x8664 \
-		sh -c "cd cryptos/src && abuild checksum && abuild -R -c"
+		sh -c "cd cryptos/src && abuild checksum && abuild -r -c"
 
 .PHONY: dbuild-cryptos-acinstaller-x8664
 dbuild-cryptos-acinstaller-x8664:
@@ -15,7 +15,7 @@ dbuild-cryptos-acinstaller-x8664:
 		-v ${KEY_DIR}:/home/builder/.abuild \
 		-v ${PACKAGES_DIR}:/home/builder/packages \
 		cryptosregistry.azurecr.io/docker-build:x8664 \
-		sh -c "cd cryptos/src && abuild checksum && abuild -R -c"
+		sh -c "cd cryptos/src && abuild checksum && abuild -r -c"
 
 .PHONY: dbuild-cryptos-acinstaller-armhf
 dbuild-cryptos-acinstaller-armhf:
@@ -24,7 +24,7 @@ dbuild-cryptos-acinstaller-armhf:
 		-v ${KEY_DIR}:/home/builder/.abuild \
 		-v ${PACKAGES_DIR}:/home/builder/packages \
 		cryptosregistry.azurecr.io/docker-build:armhf \
-		sh -c "cd cryptos/src && abuild checksum && abuild -c"
+		sh -c "cd cryptos/src && abuild checksum && abuild -r -c"
 
 .PHONY: dbuild-cryptos-acinstaller-aarch64
 dbuild-cryptos-acinstaller-aarch64:
@@ -33,4 +33,4 @@ dbuild-cryptos-acinstaller-aarch64:
 		-v ${KEY_DIR}:/home/builder/.abuild \
 		-v ${PACKAGES_DIR}:/home/builder/packages \
 		cryptosregistry.azurecr.io/docker-build:aarch64 \
-		sh -c "cd cryptos/src && abuild checksum && abuild -c"
+		sh -c "cd cryptos/src && abuild checksum && abuild -r -c"

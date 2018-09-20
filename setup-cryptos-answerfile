@@ -1,0 +1,15 @@
+KEYMAPOPTS="gb gb-mac"
+HOSTNAMEOPTS="-n cryptos"
+INTERFACESOPTS="
+auto eth0
+iface eth0 inet dhcp
+        hostname cryptos
+        gateway eth0
+"
+DNSOPTS="-n 9.9.9.9"
+TIMEZONEOPTS="-z UTC"
+PROXYOPTS="none"
+APKREPOSOPTS="-r http://cryports.host/packages/cryptos"
+SSHDOPTS="-c openssh"
+NTPOPTS="-c openntpd"
+DISKOPTS="-m sys /dev/sda"

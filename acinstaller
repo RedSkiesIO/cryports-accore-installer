@@ -2,16 +2,130 @@
 
 start() {
 
-	dialog  --colors \
-		--backtitle "\Z1\Zu\ZbAC-Core Installer\Zn" \
-		--title "Welcome To Your AC-Core Node!" \
-		--msgbox 'Lets get your node setup!' \
-		10 40;
+	if [ ! -d "/etc/accore" ]; then
 
-	dialog  --colors \
-		--backtitle "\Z1\Zu\ZbAC-Core Installer\Zn" \
-		--menu \
-		"Select the components to install:" \
-		10 40 3 \
-		"1" "AC Core"
+		dialog 
+			--colors \
+			--backtitle "\Z1\Zu\ZbAC-Core Installer\Zn" \
+			--title "Welcome To Your AC-Core Node!" \
+			--msgbox 'Lets get your node setup!' \
+			10 40;
+
+		_setupComponents;
+
+		_setupUser;
+
+		_setupPassword;
+	
+	fi
+
 }
+
+_setupComponents() {
+
+	COMPONENTS=$(
+		dialog \
+			--colors \
+			--backtitle "\Z1\Zu\ZbAC-Core Installer\Zn" \
+			--checklist \
+			"Select the components to install:" \
+			10 40 3 \
+			"1" "Referance Core" on \
+			"2" "Referance Wallet" off \
+			3>&1 1>&2 2>&3 3>&-
+		);
+
+	return 0;
+}
+
+_setupUser() {
+
+	SUCCESS=0;
+
+	while [[ "$SUCCESS" == 0 ]]; do
+		USERNAME=$(
+			dialog \
+				--colors \
+				--backtitle "\Z1\Zu\ZbAC-Core Installer\Zn" \
+				--title "User Setup" \
+				--inputbox "Enter your username:" \
+				10 30 \
+				3>&1 1>&2 2>&3 3>&-
+			);
+
+		if [[ -z "$USERNAME" ]]; then
+			dialog --infobox "Must set a username" 0 0 ; sleep 2;
+		else
+			SUCCESS=1;
+		fi;
+
+	done;
+
+	return 0;
+}
+
+_setupPassword() {
+
+	SUCCESS=0;
+
+	while [[ "$SUCCESS" == 0 ]]; do
+
+		FIRST=0;
+
+		while [[ "$FIRST" == 0 ]]; do
+
+			PASSWORD=$(
+				dialog \
+					--title "Password" \
+					--colors \
+					--backtitle "\Z1\Zu\ZbAC-Core Installer\Zn" \
+					--clear \
+					--insecure \
+					--passwordbox "Enter your password" \
+					10 30 \
+					3>&1 1>&2 2>&3 3>&-
+			);
+
+			if [[ -z "$PASSWORD" ]]; then
+				dialog --infobox "Must set a password" 0 0 ; sleep 2;
+			else
+				FIRST=1;
+			fi;
+
+		done;
+
+		SECOND=0;
+
+		while [[ "$SECOND" == 0 ]]; do
+
+			PASSWORDCONF=$(
+				dialog --title "Password" \
+                	--colors \
+                    --backtitle "\Z1\Zu\ZbAC-Core Installer\Zn" \
+                    --clear \
+                	--insecure \
+                    --passwordbox "Confirm your password" \
+                    10 30 \
+					3>&1 1>&2 2>&3 3>&-
+			);
+
+			if [[ -z "$PASSWORD" ]]; then
+				dialog --infobox "Must set a password" 0 0 ; sleep 2;
+			elif [[ "$PASSWORD" != "$PASSWORDCONF" ]]; then
+				dialog --infobox "Passwords Must Match" 0 0 ; sleep 2;
+			else
+				SECOND=1;
+			fi;
+
+		done;
+
+		SUCCESS=1;
+
+	done;
+
+	return 0;
+}
+
+_runInstaller() {
+
+} 

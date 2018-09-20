@@ -12,8 +12,9 @@ depends="dialog"
 install="$pkgname.post-install"
 subpackages=""
 replaces=""
-source="acinstaller"
+source="acinstaller setup-cryptos-answerfile"
 
 package() {
     install -D -m755 "$srcdir"/acinstaller "$pkgdir"/etc/init.d/acinstaller
+    install -D -m755 "$srcdir"/setup-cryptos-answerfile "$pkgdir"/root/setup-cryptos-answerfile
 }

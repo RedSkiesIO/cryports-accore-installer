@@ -16,6 +16,8 @@ start() {
 		_setupUser;
 
 		_setupPassword;
+		
+		_runSetup
 	
 	fi
 
@@ -124,4 +126,9 @@ _setupPassword() {
 	done;
 
 	return 0;
+}
+
+_runSetup() {
+    printf "$PASSWORD\n$PASSWORDCONF\ny" | setup-alpine -f /root/setup-cryptos-answerfile;
+    exit 0;
 }

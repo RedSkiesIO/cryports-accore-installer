@@ -125,7 +125,3 @@ _setupPassword() {
 
 	return 0;
 }
-
-_runInstaller() {
-
-} 

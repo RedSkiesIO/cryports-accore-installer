@@ -2,7 +2,7 @@
 
 start() {
 
-	if [ -f "/root/setup-cryptos-answerfile" ]; then
+	if [ -f "/tmp/setup-cryptos-answerfile" ]; then
 
 		dialog 
 			--colors \
@@ -129,7 +129,8 @@ _setupPassword() {
 }
 
 _runSetup() {
-    printf "$PASSWORD\n$PASSWORDCONF\ny" | setup-alpine -f /root/setup-cryptos-answerfile;
-    rm /root/setup-cryptos-answerfile;
+    printf "$PASSWORD\n$PASSWORDCONF\ny" | setup-alpine -f /tmp/setup-cryptos-answerfile;
+    rm /etc/runlevels/boot/acinstaller;
+    rm /tmp/setup-cryptos-answerfile;
     exit 0;
 }

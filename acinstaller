@@ -2,7 +2,7 @@
 
 start() {
 
-	if [ -f "/tmp/setup-cryptos-answerfile" ]; then
+	if [ ! -d "/usr/local/lib/gov" ]; then
 
 		dialog 
 			--colors \

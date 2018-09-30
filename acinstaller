@@ -2,7 +2,7 @@
 
 start() {
 
-	if [ ! -d "/usr/local/lib/gov" ]; then
+	if [ ! -d "/etc/accore" ]; then
 
 		dialog 
 			--colors \
